@@ -10,8 +10,6 @@
 
 # 为真正的工程师准备的技能
 
-[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
-
 我每天用来做真正的工程，而不是 vibe coding 的 agent 技能。
 
 开发真实应用很难。GSD、BMAD、Spec-Kit 这类方法想通过接管流程来帮忙，但这么做也拿走了你的控制权，让流程里的问题变得难以解决。
@@ -24,52 +22,26 @@
 
 ## Installation (30-second setup)
 
-Two ways in, two philosophies. **The [Claude Code plugin](https://code.claude.com/docs/en/plugins)** installs the whole set as a managed, read-only bundle that updates when I ship, so you subscribe rather than fork. **[skills.sh](https://skills.sh/mattpocock/skills)** copies editable skill files into your project, so you can hack on them and make them your own. Pick one: installing both leaves you with every skill twice.
+This repo is installed from source: you clone it, and a script symlinks its skills into the directories your agent reads. Nothing updates behind your back, and `git pull` is the update.
 
-### 1. Get the skills
-
-<details>
-<summary><strong>Claude Code</strong></summary>
+### 1. Clone and link
 
 ```bash
-claude plugins install mattpocock-skills
+git clone https://github.com/yanfeng98/nano-mattpocock-skills.git
+cd nano-mattpocock-skills
+bash scripts/link-skills.sh
 ```
 
-Or, from inside a session:
+It links each skill into `~/.claude/skills` (Claude Code) and `~/.agents/skills` (the cross-client path Codex reads, alongside its own native `~/.codex/skills`), one symlink into your clone per skill:
 
-```
-/plugin install mattpocock-skills
-```
+- An edit to a `SKILL.md` takes effect the next time you start a session.
+- `git pull` updates the whole installed set at once.
+- Adding or renaming a skill means re-running the script to relink it.
+- `deprecated/` and `misc/` are skipped on purpose. `in-progress/` is linked, because the beta feedback loop runs on a local install.
 
-It's in Claude Code's official marketplace, so there's nothing to add first, and updates arrive automatically.
+The script replaces whatever already sits at a target path, file or directory, unless it is a symlink; and it never prunes, so a skill you renamed or removed leaves its old symlink behind: delete that by hand.
 
-</details>
-
-<details>
-<summary><strong>Codex, and other agents</strong></summary>
-
-```bash
-npx skills@latest add mattpocock/skills
-```
-
-Pick the skills you want, and which coding agents to install them on. **The installer lets you choose which skills to take, so make sure `setup-matt-pocock-skills` is one of them.**
-
-A native Codex plugin is on the roadmap (see [`.agents/adr/0002-ship-as-a-claude-code-plugin.md`](./.agents/adr/0002-ship-as-a-claude-code-plugin.md)).
-
-</details>
-
-<details>
-<summary><strong>For tinkerers</strong></summary>
-
-Use the same installer, on any agent, including Claude Code:
-
-```bash
-npx skills@latest add mattpocock/skills
-```
-
-It writes the skills into your repo as ordinary files you own and can edit. Nothing updates behind your back; pull my latest changes when you want them with `npx skills update`.
-
-</details>
+Already have upstream's `mattpocock-skills` plugin enabled? Remove it (`claude plugin uninstall mattpocock-skills@claude-plugins-official`), or you will have every skill twice.
 
 ### 2. Run `/setup-matt-pocock-skills`
 

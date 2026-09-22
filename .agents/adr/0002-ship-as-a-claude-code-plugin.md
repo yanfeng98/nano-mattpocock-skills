@@ -39,3 +39,17 @@ Verified 2026-08-05, on Claude Code 2.1.222, against the live listing:
 - `claude plugin details mattpocock-skills` then reports version 1.2.0 and loads the promoted skills.
 - The listing's `source` is `{"source": "url", "url": "https://github.com/mattpocock/skills.git", "sha": …}`: the **sha is pinned**, so a release reaches installed users when that pin moves, not the moment we tag. At the time of writing the pin sits two commits behind `main`, which is why it lists 22 skills rather than the 24 in `plugin.json`.
 - The in-session `/plugin install mattpocock-skills` was **not** exercised: `/plugin` is unavailable in headless (`claude -p`) sessions. It runs the same resolver as the CLI, and the documented example form is `/plugin install <name>@claude-plugins-official`.
+
+## Update, 2026-09-22
+
+This repo is a fork (`yanfeng98/nano-mattpocock-skills`) that is not published anywhere. Everything above describes **upstream** distribution (`mattpocock/skills` and its listing in `claude-plugins-official`), and is kept as history rather than rewritten.
+
+The documented install route is now a **source deploy**: clone the repo and run `scripts/link-skills.sh`, which symlinks every skill outside `deprecated/` and `misc/` into `~/.claude/skills` and `~/.agents/skills`. `git pull` is the update, and a user's edits land in their own clone. The wording lives in [.agents/install-block.md](../install-block.md); `README.md` documents this route and no other.
+
+What that means for the decisions above:
+
+- **The plugin manifests are gone.** `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` were deleted, along with the npm shell around them (`package.json`, `package-lock.json`, `scripts/sync-plugin-version.mjs`), the release workflow, and `.changeset/`. None of it was load-bearing for this route: `scripts/link-skills.sh` derives the skill set from the filesystem, so nothing about what the script links changed. The plugin and the script never shipped the same set: the listing carried the promoted skills only, while the script links `in-progress/` too.
+- **The promoted-set invariant survives** (first bullet above), with a new authority: the top-level `README.md` index. `scripts/link-skills.sh` is a wider consumer, linking `in-progress/` too.
+- **The version invariant is void** (second bullet above): there is no `package.json` version to track, and nothing reads a plugin version. The promoted set is 25 skills as of this update, 14 user-invoked and 11 model-invoked. The "22 skills" in the 2026-08-05 verification was the official listing's pinned commit, not this repo's contents.
+- **skills.sh is no longer part of this repo's story.** The listing at `skills.sh/mattpocock/skills` installs upstream's code, which is why the README badge pointing at it was removed.
+- Anyone who already installed the upstream plugin has to remove it (`claude plugin uninstall mattpocock-skills@claude-plugins-official`) before linking this repo, or they will have every skill twice.

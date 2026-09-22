@@ -1,12 +1,15 @@
 # In Progress
 
-Beta. These skills are public on purpose: try them and tell me what breaks. They're excluded from the plugin and the top-level README until they graduate to a stable bucket, they get no docs pages, and they can change or disappear without warning.
+Beta. These skills are public on purpose: try them and tell me what breaks. They're kept out of the top-level README and the promoted set until they graduate to a stable bucket, they get no docs pages, and they can change or disappear without warning.
 
-The plugin won't give you these. Install one directly:
+`scripts/link-skills.sh` links these along with everything else, so a local install already has them. To take just one by hand, run this from the repo root:
 
 ```bash
-npx skills@latest add mattpocock/skills --skill=<name>
+mkdir -p ~/.claude/skills
+ln -sfn "$PWD/skills/in-progress/<name>" ~/.claude/skills/<name>
 ```
+
+`-f` replaces an existing link instead of writing inside it, so this is safe to re-run. Use `~/.agents/skills` instead for Codex and other Agent Skills harnesses.
 
 - **[loop-me](./loop-me/SKILL.md)**: Grill yourself into implementable workflow specs over multiple sessions, using the current directory as a stateful workspace. User-invoked.
 - **[writing-beats](./writing-beats/SKILL.md)**: Shape an article as a journey of beats, choose-your-own-adventure style. Pick a starting beat, write only that beat, then pivot to the next, until the article reaches a natural end.

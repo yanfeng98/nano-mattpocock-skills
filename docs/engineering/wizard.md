@@ -82,7 +82,7 @@ It did. It's now model-invoked, so the agent reaches for it unprompted when it h
 
 **It used to be in `in-progress/`: where is it now?**
 
-`engineering/`, as of v1.2. It graduated out of the beta bucket and now ships in the plugin, so it arrives with the rest of the promoted set rather than needing an individual install. Its behaviour didn't change on graduation.
+`engineering/`, as of v1.2. It graduated out of the beta bucket into the promoted set, so it has a slot in the top-level `README.md` index like the rest of them. Its behaviour didn't change on graduation.
 
 ## It's working if
 

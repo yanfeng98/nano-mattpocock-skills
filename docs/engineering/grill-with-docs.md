@@ -24,7 +24,7 @@ The wayfinder split comes down to session count: `/grill-with-docs` for single-s
 
 The skill writes into your repo, so you need to be somewhere it is safe to write. Resolved terms go to a `CONTEXT.md` glossary at the root, or to the relevant context's `CONTEXT.md`, if a `CONTEXT-MAP.md` at the root marks the repo as multi-context. Decisions go to `docs/adr/`. Both are created lazily; nothing exists until the first term or decision crystallises, so there is nothing to scaffold up front.
 
-It also needs two other skills present, because its own `SKILL.md` is one line that delegates to them: [grilling](https://aihero.dev/skills-grilling) supplies the interview, [domain-modeling](https://aihero.dev/skills-domain-modeling) supplies the writing. Installing `grill-with-docs` alone gets you a skill that does not work.
+It also needs two other skills present, because its own `SKILL.md` is one line that delegates to them: [grilling](https://aihero.dev/skills-grilling) supplies the interview, [domain-modeling](https://aihero.dev/skills-domain-modeling) supplies the writing. A copy of `grill-with-docs` that arrives without them does not work.
 
 ## The paper trail
 
