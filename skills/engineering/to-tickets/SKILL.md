@@ -28,7 +28,7 @@ disable-model-invocation: true
 
 <vertical-slice-rules>
 
-- 每个切片都穿过每一层（schema、API、UI、测试），走出一条窄但完整的路径：是垂直的，绝不是某一层的一条水平切片
+- 每个切片都穿过每一层（schema、API、UI、测试），走出一条窄但**完整**的路径：是垂直的，绝不是某一层的一条水平切片
 - 一个完成的切片本身就能演示，或者能自己验证
 - 每个切片的体量都定得能装进单个全新的上下文窗口
 - 任何预重构都应当先做完
@@ -70,9 +70,9 @@ disable-model-invocation: true
 
 # <NN>: <Ticket title>
 
-**What to build:** the end-to-end behaviour this ticket makes work, from the user's perspective, not a layer-by-layer implementation list.
+**What to build:** 这张工单让哪个端到端行为跑通，从用户的视角来写，不是逐层罗列实现。
 
-**Blocked by:** the numbers/titles of the tickets that gate this one, or "None (can start immediately)".
+**Blocked by:** 阻塞它的那些工单的编号/标题，或者 "None (can start immediately)"。
 
 **Status:** ready-for-agent
 

@@ -30,7 +30,7 @@ disable-model-invocation: true
 
 ## User Stories
 
-一份很长的、带编号的用户故事清单。每条用户故事都应当是这个格式：
+一份**很长**的、带编号的用户故事清单。每条用户故事都应当是这个格式：
 
 1. 作为一个 <actor>，我想要一个 <feature>，这样就能 <benefit>
 
