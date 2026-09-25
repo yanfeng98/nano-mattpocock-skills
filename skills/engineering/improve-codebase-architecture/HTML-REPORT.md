@@ -1,6 +1,6 @@
 # HTML 报告格式
 
-架构评审渲染成操作系统临时目录里的一个自包含 HTML 文件。Tailwind 与 Mermaid 都来自 CDN。Mermaid 可靠地处理图状示意图；手工搭的 div 与内联 SVG 处理更编辑化的视觉（质量图、剖面图）。两者混着用：不要什么都靠 Mermaid，它会开始显得千篇一律。
+架构评审渲染成操作系统临时目录里的一个自包含 HTML 文件。Tailwind 与 Mermaid 都来自 CDN。Mermaid 可靠地处理图状示意图；手工搭的 div 与内联 SVG 处理更编辑化的视觉（体量图、剖面图）。两者混着用：不要什么都靠 Mermaid，它会开始显得千篇一律。
 
 ## 脚手架
 
@@ -83,7 +83,7 @@
 
 把横向色带（`h-12 border-l-4`）叠起来，画出一次调用穿过的那些层。改前：6 层薄片，每层什么也不做。改后：1 条厚色带，标着合并后的职责。
 
-### 质量图（适合「接口和实现一样宽」）
+### 体量图（适合「接口和实现一样宽」）
 
 每个模块两个矩形：一个代表接口的表面积，一个代表实现。改前：接口矩形几乎和实现矩形一样高（浅）。改后：接口矩形矮，实现矩形高（深）。
 
@@ -109,7 +109,7 @@
 
 **Use exactly:** module、interface、implementation、depth、deep、shallow、seam、adapter、leverage、locality（严格使用：模块、接口、实现、深度、深、浅、接缝、适配器、杠杆、局部性）。
 
-**Never substitute:** component、service、unit（指 module 时）· API、signature（指 interface 时）· boundary（指 seam 时）· layer、wrapper（指 module 时，你想说的就是 module）。
+**Never substitute:** component、service、unit（指 module 时：组件、服务、单元）· API、signature（指 interface 时：API、签名）· boundary（指 seam 时：边界）· layer、wrapper（指 module 时：层、包装，你想说的就是 module）。
 
 **贴合这套风格的措辞：**
 
