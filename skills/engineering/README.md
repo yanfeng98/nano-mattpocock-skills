@@ -9,7 +9,7 @@
 - **[ask-matt](./ask-matt/SKILL.md)**：问它哪个技能或流程适合你现在的处境。它是架在本仓库用户调用技能之上的一个路由。
 - **[grill-with-docs](./grill-with-docs/SKILL.md)**：拷问式访谈，同时建立你项目的领域模型，边谈边磨术语，并就地更新 `CONTEXT.md` 和 ADR。
 - **[triage](./triage/SKILL.md)**：让 issue 在一台由分诊角色组成的状态机里流转。
-- **[improve-codebase-architecture](./improve-codebase-architecture/SKILL.md)**：巡查代码库，找出可以做得更深的地方，用一份可视化的 HTML 报告呈现，然后就你选中的那一个拷问到底。
+- **[improve-codebase-architecture](./improve-codebase-architecture/SKILL.md)**：巡查代码库，找出深化机会，用一份可视化的 HTML 报告呈现，然后就你选中的那一个拷问到底。
 - **[setup-matt-pocock-skills](./setup-matt-pocock-skills/SKILL.md)**：为工程类技能配置这个仓库（问题跟踪器、分诊标签、领域文档的目录结构）。每个仓库跑一次。
 - **[to-spec](./to-spec/SKILL.md)**：把当前对话变成一份 spec 并发布到问题跟踪器。
 - **[to-tickets](./to-tickets/SKILL.md)**：把任何计划、spec 或对话拆成一组曳光弹工单，每个工单都声明自己的阻塞边，既可以写成文本放进本地文件，也可以在真正的跟踪器上做成原生阻塞链接。
