@@ -21,7 +21,7 @@ disable-model-invocation: true
 看一下当前仓库，弄清它的起始状态。有什么就读什么，不要凭假设：
 
 - `git remote -v` 和 `.git/config`：这是一个 GitHub 仓库吗？是哪一个？
-- 仓库根目录下的 `AGENTS.md` 和 `CLAUDE.md`：两者中有存在的吗？其中是否已经有 `## Agent skills` 一节？
+- 仓库根目录下的 `AGENTS.md` 和 `CLAUDE.md`：两者中有任何一个存在吗？其中是否已经有 `## Agent skills` 一节？
 - 仓库根目录下的 `CONTEXT.md` 和 `CONTEXT-MAP.md`
 - `docs/adr/`，以及任何 `src/*/docs/adr/` 目录
 - `docs/agents/`：这个技能上次的产出是否已经存在？
