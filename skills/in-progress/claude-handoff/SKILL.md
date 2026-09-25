@@ -11,7 +11,7 @@ disable-model-invocation: true
 
 在摘要里加一节 "suggested skills"，指明下一个 agent 应当对哪些技能调用 Skill 工具。
 
-不要重复其他产物里已经记下的内容（spec、计划、ADR、issue、提交、diff）。改用路径或 URL 引用它们。
+不要重复其他产物里已经记录过的内容（spec、计划、ADR、issue、提交、diff）。改用路径或 URL 引用它们。
 
 把任何敏感信息脱敏，例如 API key、密码或可识别个人身份的信息，因为这份摘要会成为 agent 的提示词。
 
