@@ -29,4 +29,4 @@
 - **[codebase-design](./codebase-design/SKILL.md)**：设计深模块的共用方法论和词汇：小接口、干净的接缝、通过接口可测。
 - **[code-review](./code-review/SKILL.md)**：对自某个固定基点以来的 diff 做两个维度的评审：**标准**（是否遵守本仓库的编码标准，外加一份 Fowler 坏味道基线？）与 **Spec**（是否忠实实现了最初的 issue 或 spec？），以并行的子 agent 运行。
 - **[resolving-merge-conflicts](./resolving-merge-conflicts/SKILL.md)**：在一个进行中的 git merge 或 rebase 冲突里逐块推进，每块都按追到双方各自一手来源的意图来解决，然后把这步操作做完，绝不 `--abort`。
-- **[wizard](./wizard/SKILL.md)**：生成一个交互式 bash 向导，带一个真人走完只有本人才能做的步骤：开通基础设施，配置凭据或 CI secret，在一个陌生的第三方后台里熟悉一遍操作，或者执行一次性的迁移或切换。
+- **[wizard](./wizard/SKILL.md)**：生成一个交互式 bash 向导，带一个真人走完只有本人才能做的步骤：开通基础设施，配置凭据或 CI 密钥，在一个陌生的第三方后台里熟悉一遍操作，或者执行只做一次的迁移或切换。
