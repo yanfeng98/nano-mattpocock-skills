@@ -24,7 +24,7 @@
 - **列出待分诊的外部 MR**：`glab mr list -F json`，然后只保留作者不是项目成员/所有者的 MR（贡献者提交的 MR，而不是维护者手上正在做的活）。
 - **评论 / 打标签 / 关闭**：`glab mr note`、`glab mr update --label`/`--unlabel`、`glab mr close`。
 
-与 GitHub 不同，GitLab 给 issue 和 MR 分开编号，所以只要知道维护者指的是哪个界面，`#42` 就是明确的。
+与 GitHub 不同，GitLab 给 issue 和 MR 分开编号，所以只要知道维护者指的是哪个请求入口，`#42` 就是明确的。
 
 ## When a skill says "publish to the issue tracker"
 

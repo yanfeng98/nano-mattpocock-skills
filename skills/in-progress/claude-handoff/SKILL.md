@@ -9,7 +9,7 @@ disable-model-invocation: true
 
 始终传 `-n`/`--name`，并给一个描述性的名字（例如 `--name "Fix login bug"`）；它决定了任务列表、会话选择器和终端标题里显示的名字。
 
-在摘要里加一节「suggested skills」，指明下一个 agent 应当对哪些技能调用 Skill 工具。
+在摘要里加一节 "suggested skills"，指明下一个 agent 应当对哪些技能调用 Skill 工具。
 
 不要重复其他产物里已经记下的内容（spec、计划、ADR、issue、提交、diff）。改用路径或 URL 引用它们。
 
