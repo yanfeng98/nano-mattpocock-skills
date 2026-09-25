@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 写一份交接文档，总结当前对话，好让一个全新的 agent 能接着做这件事。保存到用户操作系统的临时目录，而不是当前工作区。
 
-文档里要有一个 “suggested skills” 小节，写明下一个 agent 该为哪些技能调用 Skill 工具。
+文档里要有一个 「suggested skills」 小节，写明下一个 agent 该为哪些技能调用 Skill 工具。
 
 不要重复其他产物里已经记录过的内容（spec、计划、ADR、issue、commit、diff）。改用路径或 URL 引用它们。
 

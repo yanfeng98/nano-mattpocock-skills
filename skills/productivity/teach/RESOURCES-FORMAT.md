@@ -11,7 +11,7 @@
 
 - [书籍：Zatsiorsky & Kraemer 的 _The Science and Practice of Strength Training_](https://example.com)
   关于训练计划设计与适应的奠基性文本。Use for: 与周期化、恢复、强度区间有关的一切。
-- [文章：Greg Nuckols 的 “How Much Should I Train?”（Stronger By Science）](https://example.com)
+- [文章：Greg Nuckols 的 「How Much Should I Train?」（Stronger By Science）](https://example.com)
   对容量地标的循证综述。Use for: 每个肌群的每周组数目标。
 
 ## Wisdom (Communities)

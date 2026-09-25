@@ -48,10 +48,10 @@ disable-model-invocation: true
 
 维护者调用 `/triage`，用自然语言描述想要什么。理解这个请求并行动。例如：
 
-- "把需要我处理的东西都列出来"
-- "看看 #42"（issue 或 PR）
-- "把 #42 移到 ready-for-agent"
-- "有哪些可以交给 agent 了？"
+- 「把需要我处理的东西都列出来」
+- 「看看 #42」（issue 或 PR）
+- 「把 #42 移到 ready-for-agent」
+- 「有哪些可以交给 agent 了？」
 
 ## 列出需要处理的东西
 
