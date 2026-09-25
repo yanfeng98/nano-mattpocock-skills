@@ -16,10 +16,6 @@
 
 这些技能刻意做得小巧、易改、可组合。它们不挑模型。它们来自几十年的工程经验。放手去折腾，把它们改成你自己的。享受吧。
 
-如果你想跟进这些技能的改动，以及我新做的技能，可以订阅我的 newsletter，和其他约 60,000 名开发者一起：
-
-[订阅 Newsletter](https://www.aihero.dev/s/skills-newsletter)
-
 ## Installation (30-second setup)
 
 This repo is installed from source: you clone it, and a script symlinks its skills into the directories your agent reads. Nothing updates behind your back, and `git pull` is the update.
@@ -40,8 +36,6 @@ It links each skill into `~/.claude/skills` (Claude Code) and `~/.agents/skills`
 - `deprecated/` and `misc/` are skipped on purpose. `in-progress/` is linked, because the beta feedback loop runs on a local install.
 
 The script replaces whatever already sits at a target path, file or directory, unless it is a symlink; and it never prunes, so a skill you renamed or removed leaves its old symlink behind: delete that by hand.
-
-Already have upstream's `mattpocock-skills` plugin enabled? Remove it (`claude plugin uninstall mattpocock-skills@claude-plugins-official`), or you will have every skill twice.
 
 ### 2. Run `/setup-matt-pocock-skills`
 
