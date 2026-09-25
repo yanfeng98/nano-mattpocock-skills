@@ -14,7 +14,7 @@ cd nano-mattpocock-skills
 bash scripts/link-skills.sh
 ```
 
-It links every skill into `~/.claude/skills` (Claude Code) and `~/.agents/skills` (the cross-client path Codex reads, alongside its own native `~/.codex/skills`), one symlink per skill pointing back into the clone. An edit takes effect the next time you start a session, and `git pull` updates the installed set. Adding or renaming a skill means re-running the script, which never prunes: a skill you renamed or removed leaves its old symlink behind, so delete that by hand. `deprecated/` and `misc/` are skipped on purpose; `in-progress/` is linked.
+It links every skill into `~/.claude/skills` (Claude Code) and `~/.agents/skills` (the cross-client path Codex reads, alongside its own native `~/.codex/skills`), one symlink per skill pointing back into the clone. An edit takes effect the next time you start a session, and `git pull` updates the installed set. Adding or renaming a skill means re-running the script, which never prunes: a skill you renamed or removed leaves its old symlink behind, so delete that by hand. `misc/` is skipped on purpose; `in-progress/` is linked.
 
 </canonical-block>
 

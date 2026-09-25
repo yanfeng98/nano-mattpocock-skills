@@ -33,7 +33,7 @@ It links each skill into `~/.claude/skills` (Claude Code) and `~/.agents/skills`
 - An edit to a `SKILL.md` takes effect the next time you start a session.
 - `git pull` updates the whole installed set at once.
 - Adding or renaming a skill means re-running the script to relink it.
-- `deprecated/` and `misc/` are skipped on purpose. `in-progress/` is linked, because the beta feedback loop runs on a local install.
+- `misc/` is skipped on purpose. `in-progress/` is linked, because the beta feedback loop runs on a local install.
 
 The script replaces whatever already sits at a target path, file or directory, unless it is a symlink; and it never prunes, so a skill you renamed or removed leaves its old symlink behind: delete that by hand.
 
