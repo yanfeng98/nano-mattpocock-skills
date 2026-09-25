@@ -1,16 +1,16 @@
 ---
 name: setup-ts-deep-modules
-description: Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.
+description: 把 dependency-cruiser 接进 TypeScript 仓库，让每个包都成为一个深模块（deep module）：实现藏在子文件夹里，只能通过它的入口点（entry point）文件抵达。仅由用户调用。
 disable-model-invocation: true
 ---
 
-# Setup TS Deep Modules
+# 配置 TS 深模块
 
-Make every package in this repo a **deep module**: a lot of behaviour behind a small interface. A package's public surface is its **entry points** (the files at the package root), and everything in its subfolders is hidden. This skill installs [dependency-cruiser](https://github.com/sverweij/dependency-cruiser) and the rules that make the entry points the only way in, then proves the rules bite.
+把这个仓库里的每个包都做成**深模块**：大量行为放在一个小接口之后。一个包的公开表面是它的**入口点**（包根目录下的那些文件），子文件夹里的一切都是隐藏的。这个技能会安装 [dependency-cruiser](https://github.com/sverweij/dependency-cruiser)，以及那套让入口点成为唯一入口的规则，然后证明这些规则真的会咬人。
 
-For the vocabulary (deep module, interface, seam, depth), call the Skill tool with "codebase-design" and use its language throughout.
+关于这套词汇（深模块、接口、接缝（seam）、深度），用 "codebase-design" 调用 Skill 工具，并通篇使用它的用语。
 
-## The shape this enforces
+## 它强制出的结构
 
 ```
 src/packages/
@@ -21,82 +21,82 @@ src/packages/
     tests/          ← co-located tests + fixtures (a subfolder, so private).
 ```
 
-The public surface is the package's **root files**, not one designated `index.ts`. By convention implementation lives in `lib/` and tests in `tests/`, giving every package the same two-folder shape. The rule itself is general, though: *anything* in *any* subfolder is private, so you never extend the config to add a folder.
+公开表面是包的**根文件**，而不是某个指定的 `index.ts`。按约定，实现放在 `lib/`，测试放在 `tests/`，让每个包都有同样的双文件夹结构。不过规则本身是通用的：*任何*子文件夹里的*任何东西*都是私有的，所以你绝不需要为了新增一个文件夹去改配置。
 
-Four rules, all `error`:
+四条规则，全部是 `error`：
 
-1. **Entry-point boundary**: code outside a package (app code or another package) may import only that package's entry points (its root files), never anything in its subfolders.
-2. **Intra-package freedom**: a package's own files import each other freely.
-3. **Tests through the entry points**: files under `<pkg>/tests/` may import any package's entry points and their own `tests/` fixtures, but never any package's subfolder internals (not even their own). Integration tests across packages are fine; deep imports are not.
-4. **No cycles**: no dependency cycles.
+1. **入口点边界**：包外的代码（应用代码或另一个包）只能导入那个包的入口点（它的根文件），绝不导入它子文件夹里的任何东西。
+2. **包内自由**：包自己的文件之间可以自由互相导入。
+3. **测试穿过入口点**：`<pkg>/tests/` 下的文件可以导入任意包的入口点，以及自己 `tests/` 里的夹具（fixture），但绝不导入任何包的子文件夹内部（连自己的也不行）。跨包的集成测试没问题；深层导入则不行。
+4. **无循环**：没有依赖循环。
 
-**Entry points, not a barrel.** Because the public surface is *every* root file, a package can expose several small entry points (`index.ts`, `client.ts`, `server.ts`) instead of funnelling everything through one giant `index.ts`. Barrel files that re-export a whole subtree are discouraged; keep entry points small and hide implementation in subfolders.
+**要入口点，不要 barrel。** 因为公开表面是*每个*根文件，一个包可以暴露好几个小入口点（`index.ts`、`client.ts`、`server.ts`），而不必把一切都塞进一个巨大的 `index.ts`。不鼓励写那种重新导出整棵子树的 barrel 文件；把入口点保持小，把实现藏进子文件夹。
 
-Layering (which packages may depend on which) is a *different* concern and is left as a commented stub in the config for this repo to fill in.
+分层（哪些包可以依赖哪些包）是*另一个*关注点，在配置里作为一个注释掉的桩留着，交给这个仓库自己填。
 
-## Steps
+## 步骤
 
-### 1. Detect the environment
+### 1. 检测环境
 
-- **Package manager**: `pnpm-lock.yaml` → pnpm, `yarn.lock` → yarn, `bun.lockb` → bun, else npm. Use it for every command below (`pnpm`/`yarn`/`npm run`/`bunx`).
-- **Packages root**: if `src/` exists use `src/packages`, else `packages`. Confirm the choice with the user if the repo already has a different obvious convention.
-- **Existing config**: check for a `.dependency-cruiser.*` file. If one exists, do **not** overwrite it: merge the four rules and the options in, and tell the user what you added.
+- **包管理器**：`pnpm-lock.yaml` → pnpm，`yarn.lock` → yarn，`bun.lockb` → bun，否则用 npm。下面每条命令都用它（`pnpm`/`yarn`/`npm run`/`bunx`）。
+- **包根目录**：如果 `src/` 存在就用 `src/packages`，否则用 `packages`。如果仓库已经有了另一套明显的约定，就和用户确认这个选择。
+- **已有配置**：检查有没有 `.dependency-cruiser.*` 文件。如果存在，**绝不**覆盖它：把这四条规则和选项合并进去，并告诉用户你加了什么。
 
-**Done when:** package manager, packages root, and existing-config status are all known.
+**完成判据：** 包管理器、包根目录，以及是否已有配置，这三项都已确认。
 
-### 2. Install dependency-cruiser
+### 2. 安装 dependency-cruiser
 
-Install `dependency-cruiser` as a devDependency with the detected package manager.
+用检测到的包管理器把 `dependency-cruiser` 作为 devDependency 安装。
 
-**Done when:** `dependency-cruiser` is in `devDependencies`.
+**完成判据：** `dependency-cruiser` 出现在 `devDependencies` 里。
 
-### 3. Write the config
+### 3. 写配置文件
 
-Copy [`dependency-cruiser.config.cjs`](./dependency-cruiser.config.cjs) to the repo root as `.dependency-cruiser.cjs`. Set `PACKAGES_ROOT` to the root detected in step 1. The rules are path-depth based and extension-agnostic, so nothing else needs adapting.
+把 [`dependency-cruiser.config.cjs`](./dependency-cruiser.config.cjs) 复制到仓库根目录，命名为 `.dependency-cruiser.cjs`。把 `PACKAGES_ROOT` 设成第 1 步检测到的根目录。规则基于路径深度，且不区分文件扩展名，所以其他什么都不用改。
 
-**Done when:** `.dependency-cruiser.cjs` exists with the correct `PACKAGES_ROOT`, and the four forbidden rules are present.
+**完成判据：** `.dependency-cruiser.cjs` 存在且 `PACKAGES_ROOT` 正确，四条禁止规则也都在。
 
-### 4. Wire it into the checks
+### 4. 把它接进检查
 
-- Add a `lint:boundaries` script: `depcruise <packages-root>` (or `depcruise src`).
-- Fold it into the repo's umbrella check command, the one that already runs typecheck (e.g. a `check` / `ci` / `validate` script). Do **not** touch `tsconfig` or add path aliases.
-- If there is no umbrella script, add `lint:boundaries` and tell the user to include it in CI.
+- 加一个 `lint:boundaries` 脚本：`depcruise <packages-root>`（或者 `depcruise src`）。
+- 把它并进仓库的总检查命令，也就是那条已经在跑类型检查的命令（例如 `check` / `ci` / `validate` 脚本）。**绝不**去动 `tsconfig`，也不加路径别名。
+- 如果没有总检查命令，就加上 `lint:boundaries`，并告诉用户把它纳入 CI。
 
-**Done when:** `lint:boundaries` exists and runs as part of the same command as typecheck.
+**完成判据：** `lint:boundaries` 存在，并且和类型检查在同一条命令里执行。
 
-### 5. Scaffold the example package
+### 5. 为示例包搭脚手架
 
-Create a committed `<packages-root>/example/` as a copy-me template:
+创建并提交一个 `<packages-root>/example/`，作为可以照抄的模板：
 
-- `index.ts` is an entry point. Export one function that delegates to an internal file (so the package is visibly *deep*, not a pass-through).
-- `lib/impl.ts`: an internal file in a **subfolder**, imported by `index.ts`, not reachable from outside.
-- `tests/example.test.ts` imports **only** `../index` (an entry point) and asserts against the public function.
+- `index.ts` 是一个入口点。导出一个函数，由它委派给一个内部文件（这样这个包一眼就能看出是*深*的，而不是透传层）。
+- `lib/impl.ts`：**子文件夹**里的内部文件，被 `index.ts` 导入，从外面无法触及。
+- `tests/example.test.ts` **只**导入 `../index`（一个入口点），并针对公开函数做断言。
 
-Tell the user this is a starter template to copy or delete.
+告诉用户这是一个起步模板，可以照抄，也可以删掉。
 
-**Done when:** the example package exists, exposes its behaviour through a root entry point, and hides `impl` in a subfolder.
+**完成判据：** 示例包已存在，通过一个根入口点暴露自己的行为，并把 `impl` 藏在子文件夹里。
 
-### 6. Prove the rules bite
+### 6. 证明规则真的会咬人
 
-This is the completion criterion for the whole skill: a config that doesn't fail on a violation is worthless.
+这是整个技能的完成判据：一份在违规时不报错的配置毫无价值。
 
-1. Run `lint:boundaries`. It must **pass** on the clean example.
-2. Temporarily add a deep import to `tests/example.test.ts` (e.g. `import { thing } from "../lib/impl"`). Run `lint:boundaries` again; it must **fail** with `tests-through-entrypoints`.
-3. Revert the deep import. Run once more, and it must **pass**.
+1. 跑 `lint:boundaries`。在干净的示例上它必须**通过**。
+2. 临时给 `tests/example.test.ts` 加一个深层导入（例如 `import { thing } from "../lib/impl"`）。再跑一次 `lint:boundaries`；它必须**失败**，报出 `tests-through-entrypoints`。
+3. 撤掉这个深层导入。再跑一次，它必须**通过**。
 
-**Done when:** you have observed a pass, then a fail on the deep import, then a pass again. If step 2 does not fail, the rules are not wired correctly, so fix before finishing.
+**完成判据：** 你看到一次通过、一次因深层导入而失败，然后又一次通过。如果第 2 步不失败，说明规则没接对，所以要先修好再收工。
 
-### 7. Document the convention
+### 7. 把约定写进文档
 
-Write a `README.md` **in the packages folder** (`<packages-root>/README.md`, next to the packages it governs) covering: the `src/packages/<name>/` layout (entry points at the root, `lib/` for implementation, `tests/` for tests), "import only through a package's entry points (its root files)", and how to run `lint:boundaries`. **Discourage barrel files** explicitly: expose several small entry points instead of re-exporting a whole subtree through one index. Keep it to the copy-me snippet plus the four rules in one paragraph each.
+写一个 `README.md`，**放在包所在的文件夹里**（`<packages-root>/README.md`，就在它管辖的那些包旁边），内容涵盖：`src/packages/<name>/` 的布局（入口点在根目录，`lib/` 放实现，`tests/` 放测试）、「只通过包的入口点（它的根文件）导入」，以及怎么跑 `lint:boundaries`。明确**不鼓励 barrel 文件**：暴露几个小入口点，而不是用一个 index 重新导出整棵子树。内容只保留这份照抄片段，加上四条规则、每条各一段。
 
-Then add a **context pointer** to it from the repo's agent-instructions file (`CLAUDE.md` if present, else `AGENTS.md`, creating `AGENTS.md` if neither exists). One line is enough, e.g. `Packages are deep modules: see [src/packages/README.md](./src/packages/README.md) before adding or importing one.` This is what makes an agent discover the boundary rule instead of tripping over it.
+然后从仓库的 agent 指令文件（`CLAUDE.md` 存在就用它，否则用 `AGENTS.md`；两者都没有就创建 `AGENTS.md`）里给它加一个**上下文指针（context pointer）**。一行就够，例如 `Packages are deep modules: see [src/packages/README.md](./src/packages/README.md) before adding or importing one.` 正是这一行让 agent 发现边界规则，而不是一头撞上去。
 
-**Done when:** `<packages-root>/README.md` exists and discourages barrels, and the repo's `CLAUDE.md`/`AGENTS.md` links to it.
+**完成判据：** `<packages-root>/README.md` 存在且不鼓励 barrel，并且仓库的 `CLAUDE.md`/`AGENTS.md` 链到它。
 
-## Notes
+## 备注
 
-- The config's `$1` back-references (dependency-cruiser's group matching) are what let a package reach its own internals while outsiders can't. Don't flatten them into separate per-package rules.
-- Public vs private is decided by **depth**: a package's root files are entry points; anything in a subfolder is private. The conventional subfolders are `lib/` (implementation) and `tests/`, but the rule doesn't hardcode them: any subfolder is private, so a new folder never needs a config change. Adding an entry point is just adding a root file (no barrel).
-- Packages are **flat**: one tier of immediate children under the root. A package's internals may nest as deep as you like; a package may not contain another package.
-- Use `.cjs` (not `.js`) so the config's `module.exports` works even in `"type": "module"` repos.
+- 配置里的 `$1` 反向引用（dependency-cruiser 的分组匹配）正是让一个包能触及自己内部、而外部做不到的原因。不要把它们摊平成每个包各写一条的规则。
+- 公开还是私有由**深度**决定：包的根文件是入口点；子文件夹里的任何东西都是私有的。约定俗成的子文件夹是 `lib/`（实现）和 `tests/`，但规则并没有把它们写死：任何子文件夹都是私有的，所以新增文件夹永远不需要改配置。加入口点就是加一个根文件（不用 barrel）。
+- 包是**平铺**的：根目录下只有一层直接子项。包的内部想嵌套多深都行；但一个包里不能包含另一个包。
+- 用 `.cjs`（不要用 `.js`），这样即使在 `"type": "module"` 的仓库里，配置里的 `module.exports` 也能工作。
