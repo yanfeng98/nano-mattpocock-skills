@@ -1,6 +1,6 @@
 ---
 name: to-questionnaire
-description: 把你独自答不全的一个决策，变成一份交给别人填写的问卷。
+description: 把一个你答不全的决策，变成一份交给别人填写的问卷。
 disable-model-invocation: true
 ---
 
@@ -21,21 +21,21 @@ disable-model-invocation: true
 
 <questionnaire-template>
 
-# <问卷标题>
+# <Questionnaire title>
 
 **Purpose:** 这份问卷为什么存在，以及压在它上面的那个决策是什么。
 
 **From:** <用户>，**To:** <收件人>，**How your answers will be used:** <它们会被送到哪儿>
 
-## 背景
+## Context
 
 一段话，给没进过用户脑子的收件人做个铺垫。够答得好就行，不要写成整整一页。
 
-## 如何作答
+## How to answer
 
 截止时间，以及大致要花多少工夫。部分作答和「我不知道」都有用：拿不准的地方标出来，不要跳过去。
 
-## <主题小标题>
+## <Theme heading>
 
 每个主题一个 `##` 小节。每个小节下面放它的问题，最重要的在前。每个问题只装一个想法，绝不复合；问题正下方留一个作答的空位；只有当问题可能被误读、或者可能招来敷衍的作答时，才加一行_为什么这重要_。
 
@@ -47,7 +47,7 @@ _为什么这重要：它决定我们现在就为突发流量做资源准备，�
 >
 </question-example>
 
-## 还有什么？
+## Anything else?
 
 收尾的兜底问题：还有什么是我们没问到、但应该知道的？
 

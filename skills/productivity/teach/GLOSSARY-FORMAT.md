@@ -16,7 +16,7 @@
 _Avoid_: Bulking, getting big（增重增肥、练大块头）
 
 **Progressive overload**:
-通过负荷、容量或强度，随时间系统地提高对一块肌肉的要求强度。
+通过负荷、容量或强度，随时间系统地提高对一块肌肉的负荷要求。
 _Avoid_: Pushing harder, levelling up（拼命加练、升级打怪）
 
 **RPE (Rate of Perceived Exertion)**:
