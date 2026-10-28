@@ -69,7 +69,7 @@ It does now, but for a long time it did not. v1.0 removed the inline deep-module
 
 **Does the design-it-twice pattern work outside Claude Code?**
 
-Not cleanly. `DESIGN-IT-TWICE.md` says "spawn 3+ sub-agents in parallel using the Agent tool", and "Agent" is the name of a Claude Code [tool](https://www.aihero.dev/ai-coding-dictionary/tool). The repo ships metadata for other [harnesses](https://www.aihero.dev/ai-coding-dictionary/harness), including Codex, and those may have no tool with that name. So the parallel-design phase is less portable than the skill's metadata suggests. [Issue #564](https://github.com/mattpocock/skills/issues/564) tracks this, and it is open.
+It does now. `DESIGN-IT-TWICE.md` asks you to spawn 3+ sub-agents in parallel without naming a harness-specific tool or agent type, so each [harness](https://www.aihero.dev/ai-coding-dictionary/harness) can use its own sub-agent facility. The earlier wording named Claude Code's `Agent` tool, which made the parallel-design phase look less portable than the rest of the skill; that wording is gone.
 
 **Can I add my own concepts to the glossary, such as connascence, module secrets, [progressive disclosure](https://www.aihero.dev/ai-coding-dictionary/progressive-disclosure)?**
 
