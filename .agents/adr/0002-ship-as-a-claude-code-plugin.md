@@ -44,6 +44,8 @@ Verified 2026-08-05, on Claude Code 2.1.222, against the live listing:
 
 This repo is a fork (`yanfeng98/nano-mattpocock-skills`) that is not published anywhere. Everything above describes **upstream** distribution (`mattpocock/skills` and its listing in `claude-plugins-official`), and is kept as history rather than rewritten.
 
+Upstream added two later updates, dated 2026-10-07 and 2026-10-08, describing managed plugin installs on Codex, Copilot and VS Code. They are not merged here because this fork does not use those routes; the source deploy below is the fork's install story.
+
 The documented install route is now a **source deploy**: clone the repo and run `scripts/link-skills.sh`, which symlinks every skill outside `deprecated/` and `misc/` into `~/.claude/skills` and `~/.agents/skills`. `git pull` is the update, and a user's edits land in their own clone. The wording lives in [.agents/install-block.md](../install-block.md); `README.md` documents this route and no other.
 
 What that means for the decisions above:

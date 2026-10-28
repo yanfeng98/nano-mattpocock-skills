@@ -25,4 +25,10 @@ To (re)link every skill outside `misc/` into the local harness skill directories
 
 No em-dashes anywhere in this repo's prose (`SKILL.md` files, docs, `README.md`, ADRs, code comments). The generated `CHANGELOG.md` is frozen history and keeps the ones it already has. Where a sentence reaches for one, rewrite it instead with a comma, colon, period, parentheses, or a conjunction, whichever the sentence actually wants; never do a blind character substitution.
 
-Prose under `skills/` is written in Simplified Chinese; structure and machine-facing identifiers stay English so skills keep recognising each other. The conventions and the term glossary live in [.agents/i18n.md](./.agents/i18n.md): follow them when adding or editing a skill, and keep the glossary's forbidden renderings out of the corpus. `agents/openai.yaml`, `scripts/`, `docs/`, `CHANGELOG.md`, `.agents/` and this file stay English.
+Prose under `skills/` is written in Simplified Chinese; structure and machine-facing identifiers stay English so skills keep recognising each other. The conventions and the term glossary live in [.agents/i18n.md](./.agents/i18n.md): follow them when adding or editing a skill, and keep the glossary's forbidden renderings out of the corpus. `agents/openai.yaml`, `scripts/`, `docs/`, `CHANGELOG.md`, `.agents/` (except `i18n.md`) and this file stay English.
+
+## Agent skills
+
+### Triage labels
+
+Canonical names, unchanged. See `docs/agents/triage-labels.md`.

@@ -75,7 +75,7 @@ No. They are already agent-ready. `to-tickets` applies the `ready-for-agent` lab
 Only if you have inbound work. `triage` is older than that flow and does a different job: it handles reports other people filed. If everything in your tracker came from your own planning, you will rarely use it. If you maintain anything public, or your team files bugs to you, it is where that work starts. The main use is open-source repos that take issues from external contributors.
 
 **The agent tried to apply `ready-for-agent` and `gh` said the label doesn't exist.**
-This is a known open bug ([#616](https://github.com/mattpocock/skills/issues/616)). `setup-matt-pocock-skills` writes the label vocabulary into `docs/agents/triage-labels.md`, but does not create the labels in your tracker. Create the five state labels and two category labels yourself, once, with `gh label create` or the tracker's UI, and the error stops. The issue links to a community fix branch that has not been merged.
+This was a known bug ([#616](https://github.com/mattpocock/skills/issues/616)): `setup-matt-pocock-skills` wrote the label vocabulary into `docs/agents/triage-labels.md` but did not create the labels. It now creates each configured label the tracker lacks when Section B ran on GitHub or GitLab. If you are on an older setup output, or the tracker rejected the creation, create the five state labels and two category labels yourself once with `gh label create` or the tracker's UI, and the error stops.
 
 **Five states aren't enough. What about blocked, or deferred, or implemented?**
 This is the most-filed gap on the skill. It comes in three forms:
