@@ -12,11 +12,15 @@ set -euo pipefail
 #   - ~/.claude/skills: Claude Code
 #   - ~/.agents/skills: the cross-client path that Codex and other Agent
 #     Skills-compatible harnesses read (Codex's native root is ~/.codex/skills)
+#   - ~/.config/opencode/skills: OpenCode's native global root. OpenCode also
+#     discovers the two compatibility paths above, but registers this one later,
+#     so the same skill IDs win over a copy another collection dropped into a
+#     compatibility path.
 # Each entry is a symlink into this repo, so a `git pull` is all that's needed
 # to keep installed skills up to date.
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills")
+DESTS=("$HOME/.claude/skills" "$HOME/.agents/skills" "$HOME/.config/opencode/skills")
 
 # Collect the repo's skills once, link into every destination. `misc/` is
 # kept around but rarely used and not promoted (see its bucket's own README):

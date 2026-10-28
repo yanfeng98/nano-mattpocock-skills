@@ -28,7 +28,7 @@ cd nano-mattpocock-skills
 bash scripts/link-skills.sh
 ```
 
-It links each skill into `~/.claude/skills` (Claude Code) and `~/.agents/skills` (the cross-client path Codex reads, alongside its own native `~/.codex/skills`), one symlink into your clone per skill:
+It links each skill into `~/.claude/skills` (Claude Code), `~/.agents/skills` (the cross-client path Codex reads, alongside its own native `~/.codex/skills`), and `~/.config/opencode/skills` (OpenCode's native root, which it prefers over the other two), one symlink into your clone per skill:
 
 - An edit to a `SKILL.md` takes effect the next time you start a session.
 - `git pull` updates the whole installed set at once.

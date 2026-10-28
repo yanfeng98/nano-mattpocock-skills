@@ -9,7 +9,7 @@ mkdir -p ~/.claude/skills
 ln -sfn "$PWD/skills/in-progress/<name>" ~/.claude/skills/<name>
 ```
 
-`-f` 会替换已有的链接，而不是写进它里面，所以重复跑是安全的。Codex 和其他 Agent Skills 的 harness 请改用 `~/.agents/skills`。
+`-f` 会替换已有的链接，而不是写进它里面，所以重复跑是安全的。Codex 和其他 Agent Skills 的 harness 请改用 `~/.agents/skills`；OpenCode 的原生全局目录是 `~/.config/opencode/skills`，它也会把前两条当作兼容路径来读。
 
 - **[loop-me](./loop-me/SKILL.md)**：用多次会话把自己拷问成可落地的工作流 spec，把当前目录当作有状态的工作区。用户调用。
 - **[writing-beats](./writing-beats/SKILL.md)**：把一篇文章塑造成由节拍构成的旅程，自选冒险式的。先挑一个起始节拍，只写这一个节拍，再转向下一个，直到文章走到自然的结尾。
