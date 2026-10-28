@@ -139,7 +139,7 @@ In your agent, run it once per repo. It will:
 
 这一点内建在这些技能的每一层里：
 
-- [`/to-spec`](./skills/engineering/to-spec/SKILL.md) 会在写 spec 之前，先追问你这次要动哪些模块
+- [`/to-spec`](./skills/engineering/to-spec/SKILL.md) 会在写 spec 之前，先和你确认这次要在哪些接缝上测试
 
 而最关键的是 [`/improve-codebase-architecture`](./skills/engineering/improve-codebase-architecture/SKILL.md)：它巡查代码库，找出可以做得更深的地方，把候选交到你手上。我建议每隔几天就在自己的代码库上跑一次。它是一次巡查，不是抢救：在真正老旧的代码库上，它会找出真实的候选，但它不会替你把这一坨泥球理清楚。
 
