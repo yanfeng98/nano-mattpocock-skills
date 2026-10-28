@@ -5,7 +5,7 @@ argument-hint: "下一个会话用来做什么？"
 disable-model-invocation: true
 ---
 
-写一份当前对话的交接文档（handoff）摘要，让一个全新的 agent 能接着干下去。先把它存到用户操作系统的临时目录，再起一个后台 agent，把这份摘要作为它的提示词：`claude --bg --name "<descriptive name>" -- "$(cat <summary file>)"`。传文件可以避免 shell 执行摘要里的反引号或展开 `$`。它会在当前工作目录里启动并立即返回；用户用 `claude agents` 来管理它。
+写一份当前对话的交接文档（handoff）摘要，让一个全新的 agent 能接着干下去。先把它存到用户操作系统的临时目录，再起一个后台 agent，把这份摘要作为它的提示词：`claude --bg --name "<descriptive name>" -- "$(cat <summary file>)"`。传文件可以避免 shell 对摘要做反引号命令替换或展开 `$`。它会在当前工作目录里启动并立即返回；用户用 `claude agents` 来管理它。
 
 始终传 `-n`/`--name`，并给一个描述性的名字（例如 `--name "Fix login bug"`）；它决定了任务列表、会话选择器和终端标题里显示的名字。
 

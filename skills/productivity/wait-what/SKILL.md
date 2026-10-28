@@ -1,6 +1,6 @@
 ---
 name: wait-what
-description: "停一下。刚才那条消息没听懂：换一种说法重讲一遍。"
+description: "停一下。刚才那条消息没传达到位：换一种说法重讲一遍。"
 disable-model-invocation: true
 ---
 

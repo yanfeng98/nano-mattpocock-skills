@@ -18,7 +18,7 @@ description: "沿着两个维度评审自某个固定基点（commit、branch、
 
 用户说是哪个，哪个就是固定基点（commit SHA、分支名、tag、`main`、`HEAD~5` 等）。如果用户没指定，就问他要一个。
 
-把 diff 命令记下来，只记一次：`git diff <fixed-point>...HEAD`（三点，这样比较是拿 merge-base 做基准）。再用 `git log <fixed-point>..HEAD --oneline` 记下提交列表。
+把 diff 命令固定下来，只捕获一次：`git diff <fixed-point>...HEAD`（三点，这样比较是拿 merge-base 做基准）。再用 `git log <fixed-point>..HEAD --oneline` 记下提交列表。
 
 继续往下之前，先确认固定基点能解析（`git rev-parse <fixed-point>`），且 diff 非空。坏的 ref 或空 diff 应当在这里失败，而不是等到两个并行子 agent 里面。
 

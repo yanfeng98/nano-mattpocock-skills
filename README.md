@@ -173,13 +173,13 @@ In your agent, run it once per repo. It will:
 
 - **[prototype](./skills/engineering/prototype/SKILL.md)**：做一个用完就扔的原型来回答某个设计问题：状态或逻辑类问题产出一个可分享的 HTML 文件，UI 类问题给出几个截然不同的变体，在同一个路由上切换。
 - **[diagnosing-bugs](./skills/engineering/diagnosing-bugs/SKILL.md)**：针对难缠 bug 和性能回退的严谨诊断循环：先搭一个能在这个 bug 上变红的反馈回路 → 最小化 → 提出假设 → 埋点 → 修复 → 回归测试。
-- **[research](./skills/engineering/research/SKILL.md)**：依据高可信的一手资料调研一个问题，把结论写成带引用的 Markdown 文件存进仓库，以后台 agent 的方式运行。
+- **[research](./skills/engineering/research/SKILL.md)**：依据高信任度的一手来源调研一个问题，把结论写成带引用的 Markdown 文件存进仓库，以后台 agent 的方式运行。
 - **[tdd](./skills/engineering/tdd/SKILL.md)**：红绿重构循环的测试驱动开发。一次一个垂直切片地做功能、修 bug。
 - **[domain-modeling](./skills/engineering/domain-modeling/SKILL.md)**：主动建立并磨利项目的领域模型：拿术语表来检验用词，用边缘场景做压力测试，并就地更新 `GLOSSARY.md` 和 ADR。
 - **[codebase-design](./skills/engineering/codebase-design/SKILL.md)**：设计深模块的共用方法论和词汇：把大量行为放在一个小接口之后，落在干净的接缝上，并通过这个接口可测。
 - **[code-review](./skills/engineering/code-review/SKILL.md)**：对自某个固定基准点以来的 diff 做两个维度的评审：**标准**（是否遵守本仓库的编码标准，外加一份 Fowler 坏味道基线？）与 **Spec**（是否忠实实现了最初的 issue 或 spec？），以并行的子 agent 运行，互不干扰。
-- **[pr](./skills/engineering/pr/SKILL.md)**：一份 pull request 正文该长什么样的参考：摘要用能让改动变清楚的最小视觉，配一组证明它能工作的前后对照证据，以及一次合并危险度的判断（单向门还是双向门，加上影响半径）。
-- **[wizard](./skills/engineering/wizard/SKILL.md)**：生成一个交互式 bash 向导，带一个真人走完只有本人才能做的步骤：开通基础设施，配置凭据或 CI secret，在一个陌生的第三方后台里熟悉一遍操作，或者执行一次性的迁移或切换。
+- **[pr](./skills/engineering/pr/SKILL.md)**：一份 pull request 正文该长什么样的参考：摘要用能让改动变清楚的最小可视化，配一组证明它能工作的前后对照证据，以及一次合并危险度的判断（单向门还是双向门，加上影响半径）。
+- **[wizard](./skills/engineering/wizard/SKILL.md)**：生成一个交互式 bash 向导，带一个真人走完只有本人才能做的步骤：开通基础设施，配置凭据或 CI 密钥，在一个陌生的第三方控制台里熟悉一遍操作，或者执行只做一次的迁移或切换。
 
 ### 生产力
 

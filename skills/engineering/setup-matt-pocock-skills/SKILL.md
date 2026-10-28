@@ -56,7 +56,7 @@ GitHub 或 GitLab 跟踪器需要一个可达的仓库。当用户选了其中�
 
 > 你想保留默认的分诊标签吗？（推荐：**是**）
 
-默认值就是那五个规范角色，每个标签字符串都与它的名字相同：`needs-triage`、`needs-info`、`ready-for-agent`、`ready-for-human`、`wontfix`。答**是**时，就照原样写下去。只有用户说不的时候（通常是因为他们的跟踪器已经在用别的名字，例如 `bug:triage` 对应 `needs-triage`），才把这些覆盖收集起来，好让 `triage` 应用已有的标签，而不是创建重复的标签。
+默认值就是那五个规范角色，每个标签字符串都与它的名字相同：`needs-triage`、`needs-info`、`ready-for-agent`、`ready-for-human`、`wontfix`。答**是**时，就照原样写下去。只有用户说不的时候（通常是因为他们的跟踪器已经在用别的名字，例如 `bug:triage` 对应 `needs-triage`），才收集这些覆盖项，好让 `triage` 应用已有的标签，而不是创建重复的标签。
 
 **C 节：领域文档。**默认用**单上下文**（仓库根目录一个 `GLOSSARY.md` 加 `docs/adr/`）。这适合几乎每一个仓库；不用问，直接写。
 

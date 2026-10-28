@@ -16,7 +16,7 @@
 
 从 `git remote -v` 推断仓库；在克隆目录里运行时，`gh` 会自动这么做。
 
-只把 issue 提到用户自己的仓库里。除非用户拥有它，否则绝不提到 `mattpocock/skills`（这些技能的来源仓库）。在 fork 里，`gh` 可能默认指向上游父仓库，所以每个会话第一次 `gh issue create` 之前，先用 `gh repo view --json nameWithOwner` 检查目标；如果不是用户的仓库，就跟他确认。
+只往用户自己的仓库里提 issue。除非用户拥有它，否则绝不往 `mattpocock/skills`（这些技能的来源仓库）里提。在 fork 里，`gh` 可能默认指向上游父仓库，所以每个会话第一次 `gh issue create` 之前，先用 `gh repo view --json nameWithOwner` 检查目标；如果不是用户的仓库，就和用户确认。
 
 ## Pull requests as a triage surface
 
