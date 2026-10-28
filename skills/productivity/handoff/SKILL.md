@@ -5,7 +5,7 @@ argument-hint: "下一个会话用来做什么？"
 disable-model-invocation: true
 ---
 
-写一份交接文档，总结当前对话，好让一个全新的 agent 能接着做这件事。保存到用户操作系统的临时目录，而不是当前工作区。
+写一份交接文档，总结当前对话，好让一个全新的 agent 能接着做这件事。保存到用户操作系统的临时目录（`$TMPDIR`，没有就用 `/tmp`；Windows 上是 `%TEMP%`），而不是当前工作区。
 
 文档里要有一个 "suggested skills" 小节，写明下一个 agent 该为哪些技能调用 Skill 工具。
 

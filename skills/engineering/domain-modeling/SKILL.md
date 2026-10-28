@@ -1,11 +1,11 @@
 ---
 name: domain-modeling
-description: "建立并磨利项目的领域模型。当讨论代码库术语、撰写或编辑 CONTEXT.md、记录或编辑 ADR 时使用。"
+description: "建立并磨利项目的领域模型。当讨论代码库术语、撰写或编辑 GLOSSARY.md、记录或编辑 ADR 时使用。"
 ---
 
 # 领域建模
 
-在设计的过程中主动建立并磨利项目的领域模型。这是一门*主动*的纪律：质疑术语、编出边缘场景，并在术语表与决策一旦成形的当下就把它们写下来。（仅仅为了取词汇而*读* `CONTEXT.md` 不算这个技能：那是一行就能做完的习惯，任何技能都能做。这个技能处理的是你在改变模型的时候，而不只是消费它。）
+在设计的过程中主动建立并磨利项目的领域模型。这是一门*主动*的纪律：质疑术语、编出边缘场景，并在术语表与决策一旦成形的当下就把它们写下来。（仅仅为了取词汇而*读* `GLOSSARY.md` 不算这个技能：那是一行就能做完的习惯，任何技能都能做。这个技能处理的是你在改变模型的时候，而不只是消费它。）
 
 ## 文件结构
 
@@ -13,7 +13,7 @@ description: "建立并磨利项目的领域模型。当讨论代码库术语、
 
 ```
 /
-├── CONTEXT.md
+├── GLOSSARY.md
 ├── docs/
 │   └── adr/
 │       ├── 0001-event-sourced-orders.md
@@ -21,29 +21,29 @@ description: "建立并磨利项目的领域模型。当讨论代码库术语、
 └── src/
 ```
 
-如果根目录下存在 `CONTEXT-MAP.md`，这个仓库就有多个上下文。上下文地图指向每一个的所在：
+如果根目录下存在 `GLOSSARY-MAP.md`，这个仓库就有多个上下文。上下文地图指向每一个的所在：
 
 ```
 /
-├── CONTEXT-MAP.md
+├── GLOSSARY-MAP.md
 ├── docs/
 │   └── adr/                          ← system-wide decisions
 ├── src/
 │   ├── ordering/
-│   │   ├── CONTEXT.md
+│   │   ├── GLOSSARY.md
 │   │   └── docs/adr/                 ← context-specific decisions
 │   └── billing/
-│       ├── CONTEXT.md
+│       ├── GLOSSARY.md
 │       └── docs/adr/
 ```
 
-按需创建文件：只有真的有东西要写时才创建。如果还没有 `CONTEXT.md`，就在第一个术语定下来时创建它。如果还没有 `docs/adr/`，就在第一次需要 ADR 时创建它。
+按需创建文件：只有真的有东西要写时才创建。如果还没有 `GLOSSARY.md`，就在第一个术语定下来时创建它。如果还没有 `docs/adr/`，就在第一次需要 ADR 时创建它。
 
 ## 会话进行中
 
 ### 用术语表检验用词
 
-当用户用的术语与 `CONTEXT.md` 里既有的语言冲突时，立刻指出来。「你的术语表把 'cancellation' 定义成 X，但你想说的似乎是 Y。到底是哪个？」
+当用户用的术语与 `GLOSSARY.md` 里既有的语言冲突时，立刻指出来。「你的术语表把 'cancellation' 定义成 X，但你想说的似乎是 Y。到底是哪个？」
 
 ### 把模糊的说法磨利
 
@@ -57,11 +57,11 @@ description: "建立并磨利项目的领域模型。当讨论代码库术语、
 
 当用户断言某个东西是怎么工作的，就去核对代码是否同意。发现矛盾就摆出来：「你的代码会取消整张 Order，但你刚说可以部分取消。哪个是对的？」
 
-### 就地更新 CONTEXT.md
+### 就地更新 GLOSSARY.md
 
-一个术语定下来，就地更新 `CONTEXT.md`。不要攒起来一起写：发生的时候就记下。使用 [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md) 里的格式。
+一个术语定下来，就地更新 `GLOSSARY.md`。不要攒起来一起写：发生的时候就记下。使用 [GLOSSARY-FORMAT.md](./GLOSSARY-FORMAT.md) 里的格式。
 
-`CONTEXT.md` 里不应有任何实现细节。不要把 `CONTEXT.md` 当成 spec、草稿本，或实现决策的存放处。它是术语表，仅此而已。
+`GLOSSARY.md` 里不应有任何实现细节。不要把 `GLOSSARY.md` 当成 spec、草稿本，或实现决策的存放处。它是术语表，仅此而已。
 
 ### 克制地提议写 ADR
 

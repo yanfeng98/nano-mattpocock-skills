@@ -41,7 +41,7 @@ The script replaces whatever already sits at a target path, file or directory, u
 
 In your agent, run it once per repo. It will:
 
-- Ask you which issue tracker you want to use (GitHub, Linear, or local files)
+- Ask you which issue tracker you want to use (GitHub, GitLab, local files, or anything else you describe)
 - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
 - Ask you where you want to save any docs we create
 
@@ -85,7 +85,7 @@ In your agent, run it once per repo. It will:
 示例
 </summary>
 
-这里有一个例子 [`CONTEXT.md`](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md)，来自我的 `course-video-manager` 仓库。哪一个读起来更容易？
+这里有一个例子[术语表](https://github.com/mattpocock/course-video-manager/blob/076a5a7a182db0fe1e62971dd7a68bcadf010f1c/CONTEXT.md)（在那个固定提交里仍叫 `CONTEXT.md`，那是技能改名前的事），来自我的 `course-video-manager` 仓库。哪一个读起来更容易？
 
 - **BEFORE**: “课程里某个章节中的一节课被做成‘真实’的（也就是在文件系统里有了位置）时会有问题”
 - **AFTER**: “物化级联（materialization cascade）出了问题”
@@ -158,14 +158,16 @@ In your agent, run it once per repo. It will:
 **用户调用（User-invoked）**
 
 - **[ask-matt](./skills/engineering/ask-matt/SKILL.md)**：问它哪个技能或流程适合你现在的处境。它是架在本仓库所有用户调用技能之上的一个路由。
-- **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**：拷问式访谈，同时建立你项目的领域模型，边谈边磨术语，并就地更新 `CONTEXT.md` 和 ADR。
+- **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**：拷问式访谈，同时建立你项目的领域模型，边谈边磨术语，并就地更新 `GLOSSARY.md` 和 ADR。
 - **[triage](./skills/engineering/triage/SKILL.md)**：让 issue 沿着由分诊角色组成的状态机流转。
 - **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)**：巡查代码库，找出可以做得更深的地方，用一份可视化的 HTML 报告呈现，然后就你选中的那个拷问到底。
 - **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)**：为工程类技能配置这个仓库（问题跟踪器、分诊标签、领域文档的目录结构）。在用其他工程技能之前，每个仓库先跑一次。
 - **[to-spec](./skills/engineering/to-spec/SKILL.md)**：把当前对话变成一份 spec 并发布到问题跟踪器。不做访谈，只是把你已经谈过的东西综合出来。
 - **[to-tickets](./skills/engineering/to-tickets/SKILL.md)**：把任何计划、spec 或对话拆成一组曳光弹工单，每个工单都声明自己的阻塞边，既可以写成文本放进本地文件，也可以在真正的跟踪器上做成原生阻塞链接。
 - **[implement](./skills/engineering/implement/SKILL.md)**：实现 spec 或一组工单所描述的工作，在事先约定的接缝上驱动 `/tdd`，提交前用 `/code-review` 收尾。
+- **[implement-spec](./skills/engineering/implement-spec/SKILL.md)**：在一整条集成分支上实现整份 spec。把工单当作任务图来推进，在就绪的前沿上并行跑实现者子 agent，以求最大并发，最后用 `/code-review` 收尾。
 - **[wayfinder](./skills/engineering/wayfinder/SKILL.md)**：把一大块超出单个 agent 会话容量的工作，规划成问题跟踪器上一张由决策工单组成的共享地图，然后一张一张地解决，直到通往目的地的路清晰起来。
+- **[retro](./skills/engineering/retro/SKILL.md)**：在一次会话之后，给编码 agent 的环境（导航、自动化检查、编码标准、引导文件、工具）提改进建议，最严重的排在最前。
 
 **模型调用（Model-invoked）**
 
@@ -173,10 +175,10 @@ In your agent, run it once per repo. It will:
 - **[diagnosing-bugs](./skills/engineering/diagnosing-bugs/SKILL.md)**：针对难缠 bug 和性能回退的严谨诊断循环：先搭一个能在这个 bug 上变红的反馈回路 → 最小化 → 提出假设 → 埋点 → 修复 → 回归测试。
 - **[research](./skills/engineering/research/SKILL.md)**：依据高可信的一手资料调研一个问题，把结论写成带引用的 Markdown 文件存进仓库，以后台 agent 的方式运行。
 - **[tdd](./skills/engineering/tdd/SKILL.md)**：红绿重构循环的测试驱动开发。一次一个垂直切片地做功能、修 bug。
-- **[domain-modeling](./skills/engineering/domain-modeling/SKILL.md)**：主动建立并磨利项目的领域模型：拿术语表来检验用词，用边缘场景做压力测试，并就地更新 `CONTEXT.md` 和 ADR。
+- **[domain-modeling](./skills/engineering/domain-modeling/SKILL.md)**：主动建立并磨利项目的领域模型：拿术语表来检验用词，用边缘场景做压力测试，并就地更新 `GLOSSARY.md` 和 ADR。
 - **[codebase-design](./skills/engineering/codebase-design/SKILL.md)**：设计深模块的共用方法论和词汇：把大量行为放在一个小接口之后，落在干净的接缝上，并通过这个接口可测。
 - **[code-review](./skills/engineering/code-review/SKILL.md)**：对自某个固定基准点以来的 diff 做两个维度的评审：**标准**（是否遵守本仓库的编码标准，外加一份 Fowler 坏味道基线？）与 **Spec**（是否忠实实现了最初的 issue 或 spec？），以并行的子 agent 运行，互不干扰。
-- **[resolving-merge-conflicts](./skills/engineering/resolving-merge-conflicts/SKILL.md)**：在一个进行中的 git merge 或 rebase 冲突里逐块推进，每块都先追到双方各自的一手来源，弄清意图之后再决定怎么解，然后把这步操作做完（绝不 `--abort`）。
+- **[pr](./skills/engineering/pr/SKILL.md)**：一份 pull request 正文该长什么样的参考：摘要用能让改动变清楚的最小视觉，配一组证明它能工作的前后对照证据，以及一次合并危险度的判断（单向门还是双向门，加上影响半径）。
 - **[wizard](./skills/engineering/wizard/SKILL.md)**：生成一个交互式 bash 向导，带一个真人走完只有本人才能做的步骤：开通基础设施，配置凭据或 CI secret，在一个陌生的第三方后台里熟悉一遍操作，或者执行一次性的迁移或切换。
 
 ### 生产力
@@ -189,7 +191,7 @@ In your agent, run it once per repo. It will:
 - **[handoff](./skills/productivity/handoff/SKILL.md)**：把当前对话压缩成一份交接文档，好让另一个 agent 接着做。
 - **[teach](./skills/productivity/teach/SKILL.md)**：用多次会话教你一项新技能或新概念，把当前目录当作一个有状态的教学工作区。
 - **[to-questionnaire](./skills/productivity/to-questionnaire/SKILL.md)**：把一个你独自答不了的决策，变成一份 Markdown 问卷，交给唯一能答的那个人：异步填写，或者开会时一起填。它拷问的是发送这件事本身（发给谁、你要拿回什么），不是问卷的主题。
-- **[wait-what](./skills/productivity/wait-what/SKILL.md)**：一条消息没听懂，就立刻用它。agent 会补上你缺的上下文，用你的 `CONTEXT.md` 词汇、用大白话重新讲一遍。
+- **[wait-what](./skills/productivity/wait-what/SKILL.md)**：一条消息没听懂，就立刻用它。agent 会补上你缺的上下文，用你的 `GLOSSARY.md` 词汇、用大白话重新讲一遍。
 
 **模型调用（Model-invoked）**
 

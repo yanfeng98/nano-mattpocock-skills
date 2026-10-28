@@ -10,7 +10,7 @@ description: "沿着两个维度评审自某个固定基点（commit、branch、
 
 两个维度都作为**并行子 agent** 运行，彼此不污染上下文，再由本技能汇总它们的发现。
 
-问题跟踪器本应已经提供给你。如果 `docs/agents/issue-tracker.md` 缺失，让用户运行 `/setup-matt-pocock-skills`。
+问题跟踪器本应已经提供给你。如果没有，让用户运行 `/setup-matt-pocock-skills`。
 
 ## 流程
 
@@ -26,14 +26,14 @@ description: "沿着两个维度评审自某个固定基点（commit、branch、
 
 按这个顺序找来源 spec：
 
-1. 提交信息里的 issue 引用（`#123`、`Closes #45`、GitLab `!67` 等），通过 `docs/agents/issue-tracker.md` 里的工作流抓取。
+1. 提交信息里的 issue 引用（`#123`、`Closes #45`、GitLab `!67` 等），通过跟踪器文档里的工作流抓取。
 2. 用户作为参数传入的路径。
 3. `docs/`、`specs/` 或 `.scratch/` 下与分支名或功能相符的 spec 文件。
 4. 如果什么都没找到，问用户 spec 在哪里。如果用户说没有，**Spec** 子 agent 会跳过，并汇报 「没有可用的 spec」。
 
 ### 3. 找到标准来源
 
-仓库里任何记录代码该怎么写的东西，例如 `CODING_STANDARDS.md` 或 `CONTRIBUTING.md`。
+在仓库里搜索每一个记录代码该怎么写的文件。存在 `CODING_STANDARDS.md` 或 `CONTRIBUTING.md` 时，它必须在清单上。
 
 在仓库记录的这些之外，标准维度始终带上下面这份**坏味道基线**：一组固定的 Fowler 代码坏味道（_Refactoring_，第 3 章），即使仓库什么都没记录也照样适用。有两条规则约束它：
 
@@ -56,6 +56,8 @@ description: "沿着两个维度评审自某个固定基点（commit、branch、
 - **Refused Bequest**：子类或实现者忽略或覆盖了它继承来的大部分东西。→ 去掉继承，改用组合。
 
 ### 4. 并行起两个子 agent
+
+把两次子 agent 调用一起发出去，放在前台，并汇总它们返回的报告。
 
 **标准子 agent 的提示词**应包含：
 

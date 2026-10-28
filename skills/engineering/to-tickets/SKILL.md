@@ -18,7 +18,7 @@ disable-model-invocation: true
 
 ### 2. 探索代码库（可选）
 
-如果还没探索过代码库，就探索一遍，弄清代码当前的状况。工单标题和描述都应当使用项目的领域术语表词汇，并尊重你即将改动那片区域里的 ADR。
+如果还没探索过代码库，就探索一遍，弄清代码当前的状况。工单标题和描述都应当使用项目的领域术语表词汇，并尊重你正在触碰的那片区域里的 ADR。
 
 寻找机会先给代码做预重构（prefactor），让实现更省力。「先让改动变容易，再做那个容易的改动。」
 
@@ -60,7 +60,7 @@ disable-model-invocation: true
 发布获批的工单。**怎么发**取决于 `/setup-matt-pocock-skills` 配置好的跟踪器；两种方式下工单都一样，变的只是阻塞边的形态：
 
 - **本地文件** → 在 `.scratch/<feature-slug>/issues/<NN>-<slug>.md` 下每张工单写一个文件，按依赖顺序从 `01` 开始编号（阻塞者在前）。每个文件的 "Blocked by" 列出它依赖的编号/标题。用下面那份每张工单一个文件的模板：一张工单一个文件，绝不是一个把所有工单合成一个的文件。
-- **真实的 issue 跟踪器（GitHub、Linear、…）** → 按依赖顺序（阻塞者在前）每张工单发布一个 issue，这样每张工单的阻塞边都能引用真实的标识符。平台有原生的阻塞 / 子 issue 关系就使用它；否则把每张工单的 "Blocked by" 设为那些阻塞它的 issue。除非另有指示，否则打上 `ready-for-agent` 分诊标签；这些工单按构造就是 agent 可以直接抓的。
+- **真实的 issue 跟踪器（GitHub、Linear、…）** → 按依赖顺序（阻塞者在前）每张工单发布一个 issue，这样每张工单的阻塞边都能引用真实的标识符。平台有原生的阻塞关系就使用它；否则把每张工单的 "Blocked by" 设为那些阻塞它的 issue。如果来源是一条已有的 issue，就把每张工单都做成它的子 issue（用跟踪器文档里的操作）。除非另有指示，否则打上 `ready-for-agent` 分诊标签；这些工单按构造就是 agent 可以直接抓的。
 
 按**前沿（frontier）**推进：先做阻塞者全都做完的那些工单。对于一条纯粹的线性链，那就是从上到下。
 
@@ -93,12 +93,12 @@ disable-model-invocation: true
 
 ## Acceptance criteria
 
-- [ ] 标准 1
-- [ ] 标准 2
+- [ ] 验收标准 1
+- [ ] 验收标准 2
 
 ## Blocked by
 
-- 对每张阻塞工单的引用，或者 "None (can start immediately)"。
+- 对每张阻塞工单的引用，或者 "None (can start immediately)"。当阻塞关系已用原生边设置时，省略这一节。
 
 </issue-template>
 

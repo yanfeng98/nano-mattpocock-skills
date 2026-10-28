@@ -11,7 +11,7 @@ disable-model-invocation: true
 这条命令由项目的领域模型*提供信息*，并建立在一套共享的设计词汇上：
 
 - 调用 Skill 工具，参数用 "codebase-design"，取架构词汇（**模块（module）**、**接口（interface）**、**深度（depth）**、**接缝（seam）**、**适配器（adapter）**、**杠杆（leverage）**、**局部性（locality）**）及其原则（删除测试（deletion test）、「接口就是测试面」、「一个适配器 = 假想的接缝，两个 = 真实的接缝」）。每一条建议里都完全使用这些术语，不要漂移到 "component"、"service"、"API" 或 "boundary"（组件、服务、API、边界）。
-- `CONTEXT.md` 里的领域语言为好接缝命名；`docs/adr/` 里的 ADR 记录了这条命令不应重新翻案的决策。
+- `GLOSSARY.md` 里的领域语言为好接缝命名；`docs/adr/` 里的 ADR 记录了这条命令不应重新翻案的决策。
 
 ## 流程
 
@@ -22,7 +22,7 @@ disable-model-invocation: true
 - 如果用户点了方向（某个模块、某个子系统、某个痛点），就照它来，跳过下面的推断。
 - 否则，往回翻相当长一段 commit 历史（`git log --oneline`），找出代码库的热点，也就是反复出现的那些文件与区域，让这些路径先把你的注意力拉过去。如果改动很散、没有明显热点，就把网撒大一些。
 
-先读项目的领域术语表（`CONTEXT.md`）以及你正在触碰的那片区域里的 ADR。
+先读项目的领域术语表（`GLOSSARY.md`）以及你正在触碰的那片区域里的 ADR。
 
 然后派一个子 agent 去走代码库。不要套死板的启发式；有机地探索，并记下你在哪里感到摩擦：
 
@@ -38,7 +38,7 @@ disable-model-invocation: true
 
 把一个自包含的 HTML 文件写到操作系统的临时目录，好让任何东西都不落进仓库。临时目录从 `$TMPDIR` 取，取不到就退回 `/tmp`（Windows 上是 `%TEMP%`），文件写到 `<tmpdir>/architecture-review-<timestamp>.html`，这样每次运行都得到一个新文件。为用户打开它（Linux 上用 `xdg-open <path>`，macOS 上用 `open <path>`，Windows 上用 `start <path>`），并告诉他们绝对路径。
 
-报告用 **Tailwind via CDN** 做布局与样式，用 **Mermaid via CDN** 画那些用图/流/时序能可靠传达结构的示意图。把 Mermaid 与手工打造的 CSS/SVG 视觉混着用：关系是图状的时候（调用图、依赖、时序）用 Mermaid，想要更编辑化的东西时（体量图、剖面图、折叠动画）用亲手搭的 div/SVG。每个候选都配一张**前后对比可视化**。要有视觉感。
+报告用 **Tailwind via CDN** 做布局与样式，用 **Mermaid via CDN** 画那些用图/流/时序能可靠传达结构的示意图。把 Mermaid 与手工打造的 CSS/SVG 视觉混着用：关系是图状的时候（调用图、依赖、时序）用 Mermaid，想要更有编辑排版感的东西时（体量图、剖面图、折叠动画）用亲手搭的 div/SVG。每个候选都配一张**前后对比可视化**。要有视觉感。
 
 每个候选渲染成一张卡片，包含：
 
@@ -51,9 +51,9 @@ disable-model-invocation: true
 
 报告以一个 **Top recommendation** 小节收尾：你会先动哪个候选，为什么。
 
-**领域用 `CONTEXT.md` 的词汇，架构用 `/codebase-design` 的词汇。** 如果 `CONTEXT.md` 定义了 "Order"，就说「the Order intake module」，不要说「the FooBarHandler」，也不要说「the Order service」。
+**领域用 `GLOSSARY.md` 的词汇，架构用 `/codebase-design` 的词汇。** 如果 `GLOSSARY.md` 定义了 "Order"，就说「the Order intake module」，不要说「the FooBarHandler」，也不要说「the Order service」。
 
-**ADR 冲突**：如果某个候选与已有 ADR 矛盾，只有当摩擦确实大到值得重新审视那条 ADR 时才把它摆出来。在卡片里明确标出（例如一个警告标注：*「与 ADR-0007 矛盾，但值得重新打开，因为……」*）。不要列出 ADR 禁止的每一种理论上的重构。
+**ADR 冲突**：如果某个候选与已有 ADR 矛盾，只有当摩擦确实大到值得重新审视那条 ADR 时才把它摆出来。在卡片里明确标出（例如一个警示框：*「与 ADR-0007 矛盾，但值得重新打开，因为……」*）。不要列出 ADR 禁止的每一种理论上的重构。
 
 完整的 HTML 脚手架（scaffold）、示意图模式与样式指南见 [HTML-REPORT.md](HTML-REPORT.md)。
 
@@ -65,7 +65,7 @@ disable-model-invocation: true
 
 决策成形时，副作用就地发生；调用 Skill 工具，参数用 "domain-modeling"，边走边让领域模型保持最新：
 
-- **用 `CONTEXT.md` 里没有的概念给深化后的模块命名？** 把这个术语加进 `CONTEXT.md`。文件不存在就等到需要时再创建。
-- **在对话里磨利了一个模糊的术语？** 就地更新 `CONTEXT.md`。
+- **用 `GLOSSARY.md` 里没有的概念给深化后的模块命名？** 把这个术语加进 `GLOSSARY.md`。文件不存在就等到需要时再创建。
+- **在对话里磨利了一个模糊的术语？** 就地更新 `GLOSSARY.md`。
 - **用户用一个承重的理由否掉了这个候选？** 提议写一份 ADR，说法是：*「要不要我把这件事记成一条 ADR，让今后的架构评审不再重新提它？」* 只有当未来的探索者确实需要这个理由才能避免重复提议时才提；临时性的理由（「现在不值得做」）与不言自明的理由都跳过。
 - **想为深化后的模块探索替代接口？** 调用 Skill 工具，参数用 "codebase-design"，用它的设计两遍（design it twice）并行子 agent 做法。
