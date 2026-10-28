@@ -3,9 +3,9 @@ set -euo pipefail
 
 # NOTE: This is the install route README.md documents: it is how the skill set
 # reaches a machine, and how it gets relinked after a skill is added, renamed,
-# or removed. Its behavior is load-bearing and is not open for change: it links
-# every skill outside `misc/`, `in-progress/` included, and
-# that set is what users end up with.
+# or removed. Which skills it links is load-bearing and is not open for change:
+# it links every skill outside `misc/`, `in-progress/` included, and that set is
+# what users end up with.
 #
 # Links all skills in the repository into the local skill directories used by
 # each agent harness:
